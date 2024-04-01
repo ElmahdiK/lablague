@@ -6,6 +6,16 @@ interface Blague {
 
 export default function BlagueCard(props: Blague) {
   const { title, text, handleClick } = props;
+
+  const convertStringToJSX = (text: string): JSX.Element[] => {
+    return text.split("\n").map((line) => (
+      <>
+        <span>{line}</span>
+        <br />
+      </>
+    ));
+  };
+
   return (
     <>
       <style>
@@ -32,10 +42,7 @@ export default function BlagueCard(props: Blague) {
           border-bottom: 1px dashed #ccc;
           text-align: justify;
         }
-        button:hover {
-            background-color: #fff;
-            color: #000;
-        }
+        
         button {
             background-color: #000;
             color: #fff;
@@ -57,7 +64,7 @@ export default function BlagueCard(props: Blague) {
       </style>
 
       <p className="title">{title}</p>
-      {text && <p className="text">{text}</p>}
+      {text && <p className="text">{convertStringToJSX(text)}</p>}
       {/* <img src={text} alt={title} width="400" /> */}
 
       <button onClick={handleClick}>blague suivante</button>
