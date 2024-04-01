@@ -27,6 +27,7 @@ export default function BlagueCard(props: Blague) {
             display: flex;
             flex-direction: column;
             width: 40%;
+            max-height: 70dvh;
         }
         p { 
             padding: 20px;
@@ -41,6 +42,7 @@ export default function BlagueCard(props: Blague) {
           color: #000;
           border-bottom: 1px dashed #ccc;
           text-align: justify;
+          overflow-y: scroll;
         }
         
         button {
