@@ -5,6 +5,7 @@ import BlagueCard from "./card/index.tsx";
 import { useEffect, useState } from "react";
 
 export default function Blague() {
+  const [loading, setLoading] = useState(true);
   const [lablague, setLablague] = useState({
     text_head: "",
     text: "",
@@ -15,6 +16,7 @@ export default function Blague() {
   const getNewBlague = async () => {
     const response = await fetch("https://api.blablagues.net/?rub=blagues"); // rub=images
     const data = await response.json();
+    setLoading(false);
     setLablague(data.data.content);
   };
 
@@ -23,17 +25,23 @@ export default function Blague() {
   }, []);
 
   async function handleClick() {
+    setLoading(true);
     getNewBlague();
   }
 
   return (
     <div>
-      <BlagueCard
-        title={lablague?.text_head}
-        text={lablague?.text + lablague?.text_hidden}
-        // text={lablague?.media}
-        handleClick={handleClick}
-      />
+      {loading && (
+        <img src="/astro_lablague/assets/images/loading.gif" width="200" />
+      )}
+      {!loading && (
+        <BlagueCard
+          title={lablague?.text_head}
+          text={lablague?.text + lablague?.text_hidden}
+          // text={lablague?.media}
+          handleClick={handleClick}
+        />
+      )}
     </div>
   );
 }
