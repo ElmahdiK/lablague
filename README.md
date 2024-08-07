@@ -1,3 +1,5 @@
+![screenshot](screenshot.png)
+
 # Astro Starter Kit: Basics
 
 ```sh

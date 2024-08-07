@@ -31,9 +31,7 @@ export default function Blague() {
 
   return (
     <div>
-      {loading && (
-        <img src="/astro_lablague/assets/images/loading.gif" width="200" />
-      )}
+      {loading && <img src="/lablague/assets/images/loading.gif" width="200" />}
       {!loading && (
         <BlagueCard
           title={lablague?.text_head}
