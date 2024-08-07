@@ -1,4 +1,4 @@
-![screenshot](screenshot.png)
+![screenshot](public/screenshot.png)
 
 # Astro Starter Kit: Basics
 
